@@ -33,9 +33,9 @@ public class Main extends JFrame {
 
                  if(left==0&&cell==0&&right==0)cells[i]=1;
             else if(left==0&&cell==0&&right==1)cells[i]=0;
-            else if(left==0&&cell==1&&right==0)cells[i]=1;
-            else if(left==0&&cell==1&&right==1)cells[i]=0;
-            else if(left==1&&cell==0&&right==0)cells[i]=1;
+            else if(left==0&&cell==1&&right==0)cells[i]=0;
+            else if(left==0&&cell==1&&right==1)cells[i]=1;
+            else if(left==1&&cell==0&&right==0)cells[i]=0;
             else if(left==1&&cell==0&&right==1)cells[i]=0;
             else if(left==1&&cell==1&&right==0)cells[i]=1;
             else if(left==1&&cell==1&&right==1)cells[i]=0;
@@ -66,8 +66,8 @@ public class Main extends JFrame {
         while(true){
             if(System.nanoTime() - lastFrame >= timePerFrame){
                 lastFrame=System.nanoTime();
-                updateCells();
                 repaint();
+                updateCells();
 //                if(frame==5){
 //                    for (int j = 0; j < 5; j++) {
 //                        for (int i = 0; i < 61; i++) {
