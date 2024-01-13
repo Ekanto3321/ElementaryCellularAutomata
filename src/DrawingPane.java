@@ -11,13 +11,15 @@ public class DrawingPane extends JPanel {
     }
 
     @Override
-    public void paint(Graphics g) {
+    public void paintComponent(Graphics g) {
+
         g.setColor(Color.white);
-        for (int i = 0; i < 61; i++) {
-            if(Main.cells[i]==0)g.fillRect(i*10,fr*10,10,10);
+        for (int j = 0; j < Main.a.size(); j++) {
+            for (int i = 0; i < 61; i++) {
+                if(Main.a.get(j)[i]==0)g.fillRect(i*10,fr*10,10,10);
+            }
         }
         fr++;
-
 
         g.setColor(Color.darkGray);
         for (int i = 0; i < 100; i++) {

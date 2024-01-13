@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Main extends JFrame {
     private int w=610,h=1000;
@@ -8,6 +9,7 @@ public class Main extends JFrame {
     double lastFrame = 0;
 
     public static int[] cells = new int[61];
+    public static ArrayList<int[]> a = new ArrayList<int[]>();
 
     public void updateCells(){
         int cell, left, right;
@@ -29,23 +31,23 @@ public class Main extends JFrame {
                 right = cells[i+1];
             }
 
-                 if(left==0&&cell==0&&right==0)cells[i]=0;
-            else if(left==0&&cell==0&&right==1)cells[i]=1;
-            else if(left==0&&cell==1&&right==0)cells[i]=0;
-            else if(left==0&&cell==1&&right==1)cells[i]=1;
+                 if(left==0&&cell==0&&right==0)cells[i]=1;
+            else if(left==0&&cell==0&&right==1)cells[i]=0;
+            else if(left==0&&cell==1&&right==0)cells[i]=1;
+            else if(left==0&&cell==1&&right==1)cells[i]=0;
             else if(left==1&&cell==0&&right==0)cells[i]=1;
             else if(left==1&&cell==0&&right==1)cells[i]=0;
             else if(left==1&&cell==1&&right==0)cells[i]=1;
             else if(left==1&&cell==1&&right==1)cells[i]=0;
-
-
         }
-
+        a.add(cells);
     }
     public Main(){
 
-    for (int i = 0; i < 60; i++)cells[i]=0;
-    cells[31]=1;
+    for (int i = 0; i < 60; i++){
+        cells[i]=0;
+        if(i==31)cells[i]=1;
+    }
     DrawingPane p = new DrawingPane(h,w);
     setSize(w,h);
     setTitle("Test");
@@ -60,11 +62,22 @@ public class Main extends JFrame {
 
 
     private void loop() {
+        int frame = 0;
         while(true){
             if(System.nanoTime() - lastFrame >= timePerFrame){
                 lastFrame=System.nanoTime();
                 updateCells();
                 repaint();
+//                if(frame==5){
+//                    for (int j = 0; j < 5; j++) {
+//                        for (int i = 0; i < 61; i++) {
+//                            System.out.print(a.get(j)[i]+ " ");
+//                        }
+//                        System.out.println();
+//                    }
+//                }
+//
+//                frame++;
             }
         }
     }
